@@ -2,6 +2,7 @@ const form = document.getElementById("userForm")
 
 const firstName = document.getElementById("first-name")
 const lastName = document.getElementById("last-name")
+const birthDate = document.getElementById("birth-date")
 const postalCode = document.getElementById("postal-code")
 const emailInput = document.getElementById("email")
 
@@ -22,32 +23,41 @@ function validateForm() {
     A space character.
     The same pattern repeats for the second half.
     */
-    const complexEmailPattern = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}/;
+    const complexEmailPattern = /[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
     /*
-    [a-zA-Z0-9._%+-]+ matches the local part of the email, allowing letters, numbers, dots, underscores, percent signs, plus signs, and hyphens.
-    @ matches the "@" symbol.
-    [a-zA-Z0-9.-]+ matches the domain part, allowing letters, numbers, dots, and hyphens.
-    \. matches the dot before the top-level domain (TLD).
-    [a-zA-Z]{2,} matches the TLD, requiring at least two letters and a max of 4 letters.
+    `[A-Z0-9._%+-]+` : Matches one or more of the following - alphanumeric chracters, dots, underscores, percent signs, plus signs, and hyphens.
+    `@` : Literally matches for the @ symbol, must be in middle of the email address.
+    `[A-Z0-9.-]+` : Matches one or more of the following - alphanumeric chracters, dots, and hyphens.
+    `\.` : Literal dot '.' an email addesss should have a '.' near the end.
+    `[A-Z]{2,4}$` : Matches between 2-4 alaph character - top level domain of an email address e.g. .com
+    `/i` : Case insensitive flag, check for lowercase and uppercase.
     */
 
 
     if (firstName.value.trim() === ""){
-        showInputError(userInput, "First name is required")
+        showInputError(firstName, "First name is required")
         isFormValid = false
     }
 
     if (lastName.value.trim() === ""){
-        showInputError(userInput, "Last name is required")
+        showInputError(lastName, "Last name is required")
+        isFormValid = false
+    }
+
+    if (birthDate.value.trim() === ""){
+        showInputError(birthDate, "Date of Birth is required")
         isFormValid = false
     }
 
     if (!postalCodePattern.test(postalCode.value)) {
-        showInputError(ticketNumber, "Please enter a valid Canadian postal code")
+        showInputError(postalCode, "Please enter a valid Canadian postal code")
         isFormValid = false
     }
 
-    if (!complexEmailPattern.test(emailInput.value)) {
+    if (emailInput.value.trim() === ""){
+        showInputError(emailInput, "Email is required")
+        isFormValid = false
+    } else if (!complexEmailPattern.test(emailInput.value)) {
         showInputError(emailInput, "Please enter a valid email address")
         isFormValid = false
     }
