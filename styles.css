@@ -1,0 +1,87 @@
+body {
+    font-family: "Arial", sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+form {
+    width: 90%;
+    max-width: 31.25em;
+    background: white;
+    padding: 2.25em;
+    border-radius: 0.5em;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 0.625em;
+    margin-top: 0.3125em;
+    margin-bottom: 0em;
+    border: 1px solid #ddd;
+    border-radius: 0.25em;
+}
+
+#text-input input{
+    width: 27%;
+    padding: 0.625em;
+    margin-top: 0.3125em;
+}
+
+#radio-input,
+#checkbox-input{
+    display: grid;
+    grid-template-columns: 40% 60%;
+}
+#radio-input label,
+#checkbox-input label{
+    justify-self: left;
+    padding: 0px;
+    margin: 0px;
+}
+form #radio-input input,
+form #checkbox-input input{
+    align-items: flex-end;
+    padding: 10px;
+}
+
+p{
+    margin-top: 10px;
+}
+
+button {
+    margin-top: 10px;
+    padding: 0.625em 1.25em;
+    background-color: #008cba;
+    color: white;
+    border: none;
+    border-radius: 0.3125em;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #005f73;
+}
+
+#datepicker-input,
+#postal-code-input,
+#dropdown-input,
+#email-input{
+    margin-top: 20px;
+}
+
+.error-message {
+    color: red;
+    font-style: italic;
+    font-size: small;
+    margin-top: 0;
+}
