@@ -33,7 +33,6 @@ function validateForm() {
     `/i` : Case insensitive flag, check for lowercase and uppercase.
     */
 
-
     if (firstName.value.trim() === ""){
         showInputError(firstName, "First name is required")
         isFormValid = false
@@ -70,6 +69,7 @@ function showInputError(inputElement,message) {
     errorDisplay.innerText = message;
     errorDisplay.className = "error-message";
     errorDisplay.setAttribute("role", "alert")
-
+    
     inputElement.parentElement.appendChild(errorDisplay)
+    
 }
